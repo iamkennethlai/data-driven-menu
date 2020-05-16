@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { subMenuItems } from '../data-menu';
 
 @Component({
@@ -8,12 +8,12 @@ import { subMenuItems } from '../data-menu';
 })
 export class SubMenuComponent implements OnInit {
   @Input() itemId: 0;
+
   constructor() { }
 
   ngOnInit(): void {
-  	alert(this.itemId);
   }
-
-  subMenuItems= subMenuItems;
+  subMenuItems = subMenuItems;
+  subMenuItem = subMenuItems.find(x => x.id === this.itemId);
 
 }

@@ -16,7 +16,7 @@ export const menuItems = [
   {
     id: 3,
     name: 'News and Events',
-    type: 'form',
+    type: 'page',
     child: [6, 7],
     description: ''
   },
@@ -33,8 +33,14 @@ export const menuItems = [
     type: 'form',
     child: [],
     description: ''
+  },
+  {
+    id: 6,
+    name: 'Jobs',
+    type: '',
+    child: [],
+    description: ''
   }
-
 ];
 export const subMenuItems = [
   {

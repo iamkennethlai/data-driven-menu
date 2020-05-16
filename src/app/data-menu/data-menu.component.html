@@ -2,14 +2,14 @@
     <ul class="nav navbar-nav" routerLinkActive="active">
         <li class="nav-item" *ngFor="let item of menuItems">
         	<a class="nav-link" [title]="item.description" href="#"
-        		(click)="menuItemSelect(item.id, item.type, item.child)"
+        		(click)="menuItemSelect(item, $event)"
         		[ngClass]="{'dropdown-toggle': item.child != ''}"
         		[attr.data-toggle]="item.child != '' ? 'dropdown' : null" 
         		[attr.aria-haspopup]="item.child != '' ? 'true' : null" 
         		aria-expanded="false" [id]="'menu'+item.id">
         		{{item.name}}
         	</a>
-        	<div *ngIf="item.child" class="dropdown-menu" #dropRef{{item.name}}>
+        	<div *ngIf="item.child" class="dropdown-menu">
         	  <!-- TODO: Pass the child ids into sub menu component -->
         	  <app-sub-menu [itemId]="sid" *ngFor="let sid of item.child"></app-sub-menu>
 	        </div>

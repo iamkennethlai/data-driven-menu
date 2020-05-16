@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 import { menuItems } from '../data-menu';
 import { subMenuItems } from '../data-menu';
@@ -8,31 +8,28 @@ import { subMenuItems } from '../data-menu';
   templateUrl: './data-menu.component.html',
   styleUrls: ['./data-menu.component.less']
 })
-export class DataMenuComponent implements OnInit {
-  @Input() getShowForm: boolean;
-  @Output() getShowFormChange = new EventEmitter<boolean>();
+export class DataMenuComponent {
+  @Input() isShowForm: boolean;
+  @Output() isShowFormChange = new EventEmitter<boolean>();
+  @ViewChild('dropdownSub') el:ElementRef;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
   menuItems = menuItems;
   subMenuItems= subMenuItems;
 
-  menuItemSelect(id, type, child){
-  	this.getShowForm=false;
-  	this.getShowFormChange.emit(false);
-  	if(type=='') 
-  		window.alert('This page is under construction');
-	else if(type=='form') {
-		this.getShowForm=true;
-		this.getShowFormChange.emit(true);
-	}  		
-	else
-  		alert('hi');
+  menuItemSelect(item, ev){
+	
+    /* Set the not visible */
+  	this.isShowForm=false;
+	this.isShowFormChange.emit(false);
 
+  	if(item.type=='') 
+  		window.alert('This page is under construction');
+	else if(item.type=='form') {
+		this.isShowForm=true;
+		this.isShowFormChange.emit(true);
+	}  		
   		
-  	if(child !='')
-		alert('drop down');
+  	if(item.child !='')
+		ev.target.nextSibling.style.display = 'block';
   }
 }

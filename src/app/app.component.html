@@ -45,8 +45,8 @@
   </a>
 </div>
 <div class="content">
-  <app-data-menu></app-data-menu>
-  <!-- TODO: emit is not working -->
-  <app-form  (getShowForm)="isShowForm">Form is here</app-form>
+  <app-data-menu (isShowFormChange)="showForm($event)"></app-data-menu>
+
+  <app-form *ngIf="isShowForm"></app-form>
 </div>
 <router-outlet></router-outlet>

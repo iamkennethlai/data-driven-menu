@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'data-driven-menu';
   isShowForm = false;
+
+  showForm(p){
+  	this.isShowForm = p;
+  }
 }
