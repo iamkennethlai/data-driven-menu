@@ -62,7 +62,7 @@ export const subMenuItems = [
   {
     id: 8,
     name: 'News 1',
-    type: '',
+    type: 'sub',
     child: [],
     description: '',
     show: false
@@ -70,6 +70,14 @@ export const subMenuItems = [
   {
     id: 9,
     name: 'Events 1',
+    type: 'sub',
+    child: [10],
+    description: '',
+    show: false
+  },
+  {
+    id: 10,
+    name: 'Events 1 child',
     type: '',
     child: [],
     description: '',
