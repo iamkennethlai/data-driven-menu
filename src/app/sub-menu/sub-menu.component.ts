@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { subMenuItems } from '../data-menu';
 
 @Component({
@@ -8,12 +8,27 @@ import { subMenuItems } from '../data-menu';
 })
 export class SubMenuComponent implements OnInit {
   @Input() itemId: 0;
+  subMenuItem: any;
 
-  constructor() { }
+  constructor() { 
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  	
+  	this.subMenuItem = this.getSubMenuItem(this.itemId);
   }
   subMenuItems = subMenuItems;
-  subMenuItem = subMenuItems.find(x => x.id === this.itemId);
 
+  getSubMenuItem(id) {
+  	return subMenuItems.find(x => x.id === id);
+  }
+
+  menuItemSelect(item){
+
+    if(item.type=='') 
+      window.alert('This page is under construction'); 		
+        
+    if(item.child !=''){
+      item.show = !item.show;
+    }
+  }
 }

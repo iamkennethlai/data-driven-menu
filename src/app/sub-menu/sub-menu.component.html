@@ -1,6 +1,7 @@
-<a class="dropdown-item" href="#">subMenuItem.name</a>{{subMenuItem}}
-<span *ngFor="let subMenuItem of subMenuItems">{{subMenuItem.name}}</span>
-<div If="subMenuItem.child" class="dropdown-menu">
-  <!-- TODO: Pass the child ids into sub menu component -->
-
+<a class="dropdown-item" [ngClass]="{'dropdown-toggle': subMenuItem.child != ''}" 
+(click)="menuItemSelect(subMenuItem)" href="#">
+	{{subMenuItem.name}}
+</a>
+<div *ngIf="subMenuItem.child && subMenuItem.show">
+	<app-sub-menu [itemId]="sid" *ngFor="let sid of subMenuItem.child"></app-sub-menu>
 </div>
